@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Edit item</h3>
+<form method="post">
+    Name <input type="text" name="name" autocomplete="off" required value="{{ gym.name }}">
+    Year <input type="text" name="pos" autocomplete="off" required value="{{ gym.pos }}">
+    <input class="btn" type="submit" name="submit" value="Update">
+</form>
+{% endblock %}

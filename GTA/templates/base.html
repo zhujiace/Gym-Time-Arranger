@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% if current_user.is_authenticated %}
+            <title>{{ current_user.name }}'s GTA</title>
+        {% else %}
+    <title>GTA</title>
+        {% endif %}
+        {# 静态文件也可用url_for定位，端点为static，参数为文件路径 #}
+    <link rel="icon" href="{{ url_for('static', filename='320.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    {% endblock %}  {# 大部分jinja语句需要声明关闭 #}
+</head>
+<body>
+    {# 获取消息提示 #}
+    {% for message in get_flashed_messages() %}
+        <div class="alert">{{ message }}</div>
+    {% endfor %}
+    <div class = "mian-contianer">
+    <div class = "GTA">
+    {% if current_user.is_authenticated %}
+        <h1 class="username">{{ current_user.name }}'s </h1>
+    {% endif %}
+    <h1 class = "title">
+        Gym Time Arranger
+        <img alt="Avatar" class="avatar" style="vertical-align: middle" src="{{ url_for('static', filename='yaling.png') }}">
+    </h1>
+    {# 导航栏 #}
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            {% if current_user.is_authenticated %}
+                {% if current_user.is_admin %}
+                    <li><a href="{{ url_for('verify') }}">Verify</a></li>
+                {% endif %}
+            {% endif %}
+            {% if current_user.is_authenticated %}
+            <li><a href="{{ url_for('reservation') }}">Reservation</a></li>
+            <li><a href="{{ url_for('history') }}">History</a></li>
+            <li><a href="{{ url_for('settings') }}">Settings</a></li>
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% else %}
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('register') }}">Register</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    {% block content %}{% endblock %}
+    <div class = "foot-img">
+        <img alt="Walking Totoro" class="totoro" src="{{ url_for('static', filename='images/totoro.gif') }}" title="to~to~ro~">
+    </div>
+    </div>
+    </div>
+
+    <footer>
+        <small>&copy; 2023 <a href="mailto:zhujiace020612@gmail.com">Jiace Zhu</a> Tongji University </small>
+	</footer>
+</body>
+</html>

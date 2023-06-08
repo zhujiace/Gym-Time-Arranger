@@ -1,0 +1,578 @@
+:root {
+    --dark-text: #f8fbff;
+    --light-body: #f3f8fe;
+    --light-main: #fdfdfd;
+    --light-second: #c3c2c8;
+    --light-hover: #f0f0f0;
+    --light-text: #151426;
+    --light-btn: #9796f0;
+    --blue: #0000ff;
+    --white: #fff;
+    --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    --font-family: consolas;
+  }
+  /** {*/
+  /*  padding: 0;*/
+  /*  margin: 0;*/
+  /*  box-sizing: border-box;*/
+  /*}*/
+
+body {
+    margin: auto;   /* 居中 */
+    max-width: 700px;
+    font-size: 14px;
+    /*font-family: Helvetica, Arial, sans-serif;*/
+    place-items: center;
+    font-family: var(--font-family);
+    background:linear-gradient(to right, #9796f0, #fbc7d4);
+    /*overflow: hidden;*/
+}
+
+.mian-contianer {
+    /*width: max-content;*/
+    /*height: max-content;*/
+    position: relative;
+    /*display: flex;*/
+    padding: 5% 0px 0px 0px;
+    justify-content: center;
+    top: 10%;
+    right: 0%;
+    width: 100%;
+    height: 100%;
+}
+
+.GTA {
+    /*height: 610px;*/
+    /*width: max-content;*/
+    background-color: white;
+    border-radius: 25px;
+    overflow: hidden;
+    padding: 30px 50px 30px 50px;
+}
+
+.username {
+    display: inline-block;
+}
+
+.title {
+    display: inline-block;
+    margin-left: 10px;
+    background-image:linear-gradient(to left, #9796f0, #fbc7d4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.avatar {
+    width: 40px; /*左上图标*/
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    /*background-color: #333;*/
+    background-color: #9796f0;
+    /*height:100px;*/
+    overflow: hidden;   /*防止塌陷*/
+}
+
+nav li {
+    float: left;
+}
+
+nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 8px 12px;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    /*background-color: #111;*/
+    background-color: #fbc7d4;
+}
+
+.alert {
+    position: relative;
+    padding: 7px;
+    margin: 7px 0;
+    border: 1px solid transparent;
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+    border-radius: 5px;
+}
+
+.search {
+    margin: 10px 0px 10px 8px;
+}
+
+/* 两个输入框和提交按钮 */
+input[type=submit] {
+    font-family: inherit; /* 覆盖某些浏览器对 input 元素定义的字体 */
+}
+
+input[type=text] {
+    border: 1px solid #ddd;
+}
+
+input[name=year] {
+    width: 50px;
+}
+
+/* 按钮 */
+.btn {
+    font-size: 12px;
+    padding: 3px 5px;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: 1px solid #555555;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+}
+
+.check-head {
+    margin: 10px 0 10px 0;
+    height: 300px;
+    width: 600px;
+    border-radius: 40px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.check-head h2{
+    color:#fff;
+    position: absolute;
+    top: 10px;
+    left:20px;
+    }
+.check-head h3{
+    color:#fff;
+    position: absolute;
+    bottom: 10px;
+    left:20px;
+    }
+
+
+.res-card{
+    margin: 10px;   /*外边距*/
+    /*padding: 15px;  !*内边距*!*/
+    /*border-radius: 10px;    !*圆角*!*/
+    overflow: hidden;
+    /*background-color: #eaeaea;*/
+    /*box-shadow: 15px 8px 8px #000000;*/
+    box-shadow: var(--shadow);
+    /*width: max-content;*/
+    background-color: white;
+    border-radius: 25px;
+    padding: 20px 30px 20px 30px;
+}
+
+.res-card div{
+    margin: 5px;
+}
+
+.res-card .left{
+    float: left;
+}
+
+.res-card .right{
+    float:right;
+}
+
+.res-card .btn{
+    text-align: center;
+}
+
+.res-card:hover {
+    background-color: #dadada;
+}
+
+.gym-list {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.gym-list li {
+    padding: 12px 24px;
+    border-bottom: 1px solid #ddd;
+    height: max-content;
+}
+
+.gym-list li:last-child {
+    border-bottom:none;
+}
+
+.gym-list li:hover {
+    background-color: #f8f9fa;
+}
+
+.float-right {
+    float: right;
+}
+
+.span-center{
+    margin: auto;
+}
+
+.g-progress {
+    display: inline-block;
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: conic-gradient(#FFCDB2 0, #FFCDB2 25%, #B5838D 25%, #B5838D);
+    -webkit-mask: radial-gradient(transparent, transparent 40%, #000 50%, #000 0);
+    /*mask: radial-gradient(transparent, transparent 40%, #000 50%, #000 0);*/
+}
+
+.inline-form {
+    display: inline;
+}
+
+.imdb {
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    background: #F5C518;
+    border-radius: 5px;
+    padding: 3px 5px;
+}
+
+.foot-img {
+    margin-top: 50px;
+}
+
+.totoro {
+    display: block;
+    margin: 0 auto;
+    height: 100px;
+}
+
+footer {
+    color: #888;
+    margin-top: 15px;
+    text-align: center;
+    padding: 10px;
+}
+
+/*calendar*/
+.calendar-container {
+    width: max-content;
+    height: max-content;
+    position: relative;
+    display: flex;
+    padding: 2% 0px 0px 0px;
+    justify-content: center;
+    top: 10%;
+    right: 0%;
+    width: 100%;
+    height: 100%;
+  }
+
+.calendar {
+    height: 610px;
+    width: max-content;
+    background-color: white;
+    border-radius: 25px;
+    overflow: hidden;
+    padding: 30px 50px 0px 50px;
+  }
+  .calendar {
+    box-shadow: var(--shadow);
+  }
+  .calendar-header {
+    background: #9796f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    color: var(--white);
+    padding: 10px;
+  }
+  .calendar-body {
+    padding: 10px;
+  }
+/*.calendar-body {*/
+/*    padding: 10px;*/
+/*  }*/
+.calendar-week-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    font-weight: 600;
+    cursor: pointer;
+    color:rgb(104, 104, 104);
+  }
+.calendar-week-days div:hover {
+  color:black;
+  transform: scale(1.2);
+  transition: all .2s ease-in-out;
+  }
+.calendar-week-days div {
+    display: grid;
+    place-items: center;
+    color: var(--bg-second);
+    /*color: red;*/
+    height: 50px;
+  }
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    color: var(--color-txt);
+  }
+.calendar-days div {
+    width: 37px;
+    height: 33px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    position: relative;
+    cursor: pointer;
+    animation: to-top 1s forwards;
+  }
+  .month-picker {
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .month-picker:hover {
+    background-color: var(--color-hover);
+  }
+  .month-picker:hover {
+    color: var(--color-txt);
+  }
+  .year-picker {
+    display: flex;
+    align-items: center;
+  }
+  .year-change {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    margin: 0px 10px;
+    cursor: pointer;
+  }
+  .year-change:hover {
+    background-color: var(--light-btn);
+    transition:all .2s ease-in-out ;
+    transform: scale(1.12);
+  }
+  .year-change:hover pre {
+    color: var(--bg-body);
+  }
+  .calendar-footer {
+    padding: 5px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  #year:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+    transition: all 0.2 ease-in-out;
+  }
+  .calendar-days div span {
+    position: absolute;
+  }
+   .calendar-days div:hover {
+    transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
+    background-color: #fbc7d4;
+    border-radius: 20%;
+    color: var(--dark-text);
+  }
+  .calendar-days div.current-date {
+    color: var(--dark-text);
+    background-color: var(--light-btn);
+    border-radius: 20%;
+  }
+  .calendar-days div.history-date {
+    color: var(--dark-text);
+    background-color: #fbc7d4;
+    border-radius: 20%;
+  }
+  .calendar-days div.history-date:hover::before{
+      width: max-content;
+      color: black;
+      text-align: center;
+      content: "同济大学嘉定校区体育馆 \a 篮球馆";
+      position: absolute;
+      top: -120%;
+      left: 50%;
+      padding: 5px;
+      background-color: #f2f2f2;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      white-space: pre-wrap;
+  }
+
+.calendar-days div.history-date:hover::before{
+    transform: translateX(-50%);
+}
+
+.month-list {
+    position: relative;
+    left: 0;
+    top: -50px;
+    background-color: #ebebeb;
+    color: var(--light-text);
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 5px;
+    border-radius: 20px;
+  }
+  .month-list > div {
+    display: grid;
+    place-content: center;
+    margin: 5px 10px;
+    transition: all 0.2s ease-in-out;
+  }
+  .month-list > div > div {
+    border-radius: 15px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .month-list > div > div:hover {
+    background-color:var(--light-btn);
+    color: var(--dark-text);
+    transform: scale(0.9);
+    transition: all 0.2s ease-in-out;
+  }
+  .month-list.show {
+    visibility: visible;
+    pointer-events: visible;
+    transition: 0.6s ease-in-out;
+    animation: to-left .71s forwards;
+  }
+  .month-list.hideonce{
+    visibility: hidden;
+  }
+  .month-list.hide {
+    animation: to-right 1s forwards;
+    visibility: none;
+    pointer-events: none;
+  }
+  .date-time-formate {
+    width: max-content;
+    height: max-content;
+    font-family: Dubai Light, Century Gothic;
+    position: relative;
+    display: inline;
+    top: 100px;
+    justify-content: center;
+  }
+  .day-text-formate {
+    margin-left: 50px;
+    font-family: Microsoft JhengHei UI;
+    font-size: 1.4rem;
+    padding-right: 5%;
+    border-right: 3px solid #9796f0;
+    position: absolute;
+    left: -1rem;
+  }
+  .date-time-value {
+    display: block;
+    height: max-content;
+    width: max-content;
+    position: relative;
+    left: 40%;
+    top: -18px;
+    text-align: center;
+  }
+  .time-formate {
+    font-size: 1.5rem;
+  }
+  .time-formate.hideTime {
+    animation: hidetime 1.5s forwards;
+  }
+  .day-text-formate.hidetime {
+    animation: hidetime 1.5s forwards;
+  }
+  .date-formate.hideTime {
+    animation: hidetime 1.5s forwards;
+  }
+  .day-text-formate.showtime{
+    animation: showtime 1s forwards;
+  }
+  .time-formate.showtime {
+    animation: showtime 1s forwards;
+  }
+  .date-formate.showtime {
+    animation: showtime 1s forwards;
+  }
+    @keyframes to-top {
+    0% {
+      transform: translateY(0);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(100%);
+      opacity: 1;
+    }
+  }
+  @keyframes to-left {
+    0% {
+      transform: translatex(230%);
+      opacity: 1;
+    }
+    100% {
+      transform: translatex(0);
+      opacity: 1;
+    }
+  }
+  @keyframes to-right {
+    10% {
+      transform: translatex(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translatex(-150%);
+      opacity: 1;
+    }
+  }
+  @keyframes showtime {
+    0% {
+      transform: translatex(250%);
+      opacity: 1;
+    }
+    100% {
+      transform: translatex(0%);
+      opacity: 1;
+    }
+  }
+  @keyframes hidetime {
+    0% {
+      transform: translatex(0%);
+      opacity: 1;
+    }
+    100% {
+      transform: translatex(-370%);
+      opacity: 1;
+    }
+  }
+  @media (max-width:375px) {
+    .month-list>div{
+      margin: 5px 0px;
+    }
+  }

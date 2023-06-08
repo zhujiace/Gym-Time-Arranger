@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Today's Customs</h3>
+<div class="search">
+<form method="post">
+    Key <input type="text" name="key" autocomplete="off" value="{{ key }}">
+    <input class="btn" type="submit" name="submit1" value="Search">
+</form>
+</div>
+<p>{{ reservations|length }} Item</p>
+
+    {% for r in reservations %}
+<div class="res-card">
+    <div class="left">
+        <div>姓名：{{ r.name }} &emsp; 用户名：{{ user[r.user_id - 1].username }}</div>
+        <div>联系方式：{{ r.phone }}</div>
+        {% for g in gyms %}
+            {% if g.id == r.gym_id %}
+                <div>预约体育馆：<a href="{{ url_for('check', gym_id=r.gym_id) }}">{{ g.name }}</a></div>
+                <div>体育馆位置：{{ g.pos }}</div>
+            {% endif %}
+        {% endfor %}
+        {% for v in venues %}
+            {% if v.id == r.venue_id %}
+                <div>预约具体场馆：{{ v.type }}</div>
+            {% endif %}
+        {% endfor %}
+        <div>预约时间：{{ r.res_year }} / {{ r.res_mon }} / {{ r.res_day }}</div>
+        <div>预约提交时间：{{ r.year }} / {{ r.mon }} / {{ r.day }} {{ r.hour }}:{{ r.min }}:{{ r.sec }}</div>
+    </div>
+
+</div>
+    {% endfor %}
+
+{% endblock %}

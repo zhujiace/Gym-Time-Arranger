@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>My Reservation</h3>
+<p>{{ reservations|length }} Item</p>
+
+<ul class="gym-list">
+    {% for r in reservations %}
+        <li>
+            {% for g in gyms %}
+                {% if g.id == r.gym_id %}
+                    {{ g.name }} -
+                {% endif %}
+            {% endfor %}
+            {% for v in venues %}
+                {% if v.id == r.venue_id %}
+                    {{ v.type }}
+                {% endif %}
+            {% endfor %}
+
+            {{ r.res_year }}/{{ r.res_mon }}/{{ r.res_day }}
+        <span class="float-right">
+            {% if r.state == 0 %}
+                预约中...
+                <a class="btn" href="{{ url_for('check', gym_id=r.gym_id) }}">Check</a>
+            {% elif r.state == 1 %}
+                预约成功
+                <a class="btn" href="{{ url_for('check', gym_id=r.gym_id) }}">Check</a>
+            {% elif r.state == 2 %}
+                预约失败
+                <form class="inline-form" method="post" action="{{ url_for('retry', res_id=r.id) }}">
+                    <input class="btn" type="submit" name="retry" value="Retry" onclick="return confirm('Are you sure?')">
+                </form>
+            {% elif r.state == 3 %}
+                预约过期
+                <a class="btn" href="{{ url_for('check', gym_id=r.gym_id) }}">Check</a>
+            {% endif %}
+
+            {% if current_user.is_authenticated %}
+                {# 删除按钮 #}
+            <form class="inline-form" method="post" action="{{ url_for('delete_res', res_id=r.id) }}">
+                <input class="btn" type="submit" name="delete" value="Delete" onclick="return confirm('Are you sure?')">
+            </form>
+            {% endif %}
+        </span>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

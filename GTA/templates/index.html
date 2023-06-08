@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {# 过滤器 左侧是变量 右侧是过滤名 #}
+<p>{{ gyms|length }} Item</p>
+<div class="search">
+    <form method="post">
+        Key <input type="text" name="key" autocomplete="off" value="{{ key }}">
+        <input class="btn" type="submit" name="submit1" value="Search">
+    </form>
+</div>
+
+    <!-- 在模板中可以直接使用 current_user 变量 -->
+{% if current_user.is_authenticated %}
+    {# 创建新条目表单 #}
+<form method="post">  {# 浏览器会创建一个新的请求，默认发往当前 URL（在 <form> 元素使用 action 属性可以自定义目标 URL） #}
+    Name <input type="text" name="name" autocomplete="off" required>
+    Pos <input type="text" name="pos" autocomplete="off" required>
+    <input class="btn" type="submit" name="submit2" value="Add">
+</form>
+{% endif %}
+<ul class="gym-list">
+    {% for gym in gyms %}
+    <li>{{ gym.name }} - {{ gym.pos }}
+        <span class="float-right">
+            <a class="btn" href="{{ url_for('check', gym_id=gym.id) }}">Check</a>
+            {% if current_user.is_authenticated %}
+                {% if current_user.is_admin %}
+                {# 编辑按钮 #}
+            <a class="btn" href="{{ url_for('edit', gym_id=gym.id) }}">Edit</a>
+                {# 删除按钮 #}
+            <form class="inline-form" method="post" action="{{ url_for('delete', gym_id=gym.id) }}">
+                <input class="btn" type="submit" name="delete" value="Delete" onclick="return confirm('Are you sure?')">
+            </form>
+                {% endif %}
+            {% endif %}
+            <a class="imdb" href="https://www.google.com/maps/search/{{ gym.name }}" target="_blank" title="Find this gym on Google">Google</a>
+        </span>
+        <span class="float-right">
+             <div class="g-progress" data-progress={{ gym.res/gym.max }}></div>
+        </span>
+
+    </li>
+    {% endfor %}
+    <script>
+        const elements = document.querySelectorAll('div.g-progress');
+        elements.forEach((element) => {
+            const progress = element.dataset.progress * 100;
+            console.log(progress)
+            const gradient = `conic-gradient( #B5838D ${progress}%, #FFCDB2 ${progress}%)`;
+            element.style.background = gradient;
+        });
+    </script>
+</ul>
+
+{% endblock %}

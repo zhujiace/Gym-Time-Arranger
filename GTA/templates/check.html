@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class = "check-head" style="background-image: url('{{ url_for('static', filename=gym.img) }}')">
+    <h2>{{ gym.name }}</h2>
+    <h3>{{ gym.pos }}</h3>
+</div>
+<form id="select-date" method="post">  {# 浏览器会创建一个新的请求，默认发往当前 URL（在 <form> 元素使用 action 属性可以自定义目标 URL） #}
+{#    <label for="date">选择日期：</label>#}
+    <select id="date" name="date">
+        {% for date in dates %}
+            <option value={{ date }} {% if date == select_date %}selected{% endif %}>
+                {{ date }}
+            </option>
+        {% endfor %}
+    </select>
+{#    <button type="submit">提交</button>#}
+</form>
+<script>
+    const select = document.getElementById('date'); // 获取下拉选择框元素
+    const form = document.getElementById('select-date'); // 获取表单元素
+
+    select.addEventListener('change', () => {
+      form.submit(); // 在选择变化时提交表单
+    });
+</script>
+<ul class="gym-list">
+    {% for venue in venues %}
+        <li>{{ venue.type }} 预约情况：
+                {% if select_date == '今天' %}
+                    {{ venue.res1 }}
+                {% else %}
+                    {{ venue.res2 }}
+                {% endif %}
+                / {{ venue.max }}
+            <span class="float-right">
+                {% if current_user.is_admin %}
+                <a class="btn" href="{{ url_for('check_venue', gym_id=gym.id, venue_id=venue.id) }}">Check</a>
+                {% endif %}
+                <a class="btn" href="{{ url_for('reserve', gym_id=gym.id, venue_id=venue.id, date=select_date) }}">Reserve</a>
+            </span>
+
+
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
